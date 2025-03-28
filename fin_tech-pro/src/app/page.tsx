@@ -1,9 +1,11 @@
-import Image from "next/image";
+import AuthButtons from "./components/AuthButtons";
 
 export default function Home() {
   return (
-    <div>
+    <div  className=" w-full min-h-screen flex items-center justify-center  " >
       Home
+
+      <AuthButtons/>
     </div>
   );
 }
