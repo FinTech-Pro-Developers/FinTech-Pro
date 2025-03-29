@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
+import {  EyeClosedIcon, EyeIcon, X } from "lucide-react";
 import Link from "next/link";
 import { useState, ChangeEvent, FormEvent } from "react";
 
@@ -12,6 +12,7 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ OpenLogin, onClose, openRegisterModal }: LoginModalProps) {
+    const [viewPassword, setViewPassword] = useState(false)
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -71,6 +72,14 @@ export default function LoginModal({ OpenLogin, onClose, openRegisterModal }: Lo
     }
   };
 
+
+  const handleView = () => {
+    setViewPassword((prev) => !prev)
+  }
+
+
+
+
   return (
     <>
       {OpenLogin && (
@@ -115,16 +124,22 @@ export default function LoginModal({ OpenLogin, onClose, openRegisterModal }: Lo
                     Forgot password?
                   </Link>
                 </div>
+
+                <div className="w-full flex items-center gap-3  py-2 px-4 text-sm rounded-sm outline-none border-[1px] border-[gray]" >
                 <input
                   value={values.password}
-                  type="password"
+                  type={viewPassword? "text" : "password"}
                   placeholder=""
                   name="password"
                   id="password"
                   onChange={handleChange}
                   autoComplete="current-password"
-                  className="w-full py-2 px-4 text-sm rounded-sm outline-none border-[1px] border-[gray]"
+                  className=" border-none outline-none w-full "
                 />
+                <button onClick={handleView} type="button" className="cursor-pointer"  > {viewPassword? <EyeIcon size={15} />: <EyeClosedIcon size={15}/>}
+                </button>
+                </div>
+
                 {errors.password && (
                   <p className="text-red-500 text-sm font-medium ml-auto">{errors.password}</p>
                 )}

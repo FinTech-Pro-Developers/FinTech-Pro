@@ -1,4 +1,4 @@
-import { X } from "lucide-react";
+import { EyeClosedIcon, EyeIcon, X } from "lucide-react";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 
@@ -9,6 +9,7 @@ interface RegisterModalProps {
 }
 
 export default function RegisterModal({ openRegister, onClose, openLoginModal }: RegisterModalProps) {
+    const [viewPassword, setViewPassword] = useState(false)
   const [values, setValues] = useState<{
     name: string;
     newPassword: string;
@@ -77,6 +78,11 @@ export default function RegisterModal({ openRegister, onClose, openLoginModal }:
     }
   };
 
+  const handleView = () => {
+    setViewPassword((prev) => !prev)
+  }
+
+
   return (
     <>
       {openRegister && (
@@ -128,18 +134,27 @@ export default function RegisterModal({ openRegister, onClose, openLoginModal }:
                 />
                 {errors.newPassword && <p className="text-red-500 text-sm font-medium">{errors.newPassword}</p>}
               </label>
+
+
               <label className="flex flex-col w-full">
                 <span className="text-sm text-black font-medium">Confirm Password</span>
-                <input
+               <div  className="w-full flex items-center gap-3  py-2 px-4 text-sm rounded-sm outline-none border-[1px] border-[gray]">
+               <input
                   value={values.confirmPassword}
-                  type="password"
+                  type={viewPassword? "text" : "password"}
                   name="confirmPassword"
                   onChange={handleChange}
                   autoComplete="new-password"
-                  className="w-full py-2 px-4 text-sm rounded-sm outline-none border border-gray-300"
+                  className=" border-none outline-none w-full "
                 />
+                   <button onClick={handleView} type="button" className="cursor-pointer"  > {viewPassword? <EyeIcon size={15} />: <EyeClosedIcon size={15}/>}
+                   </button>
+               </div>
                 {errors.confirmPassword && <p className="text-red-500 text-sm font-medium">{errors.confirmPassword}</p>}
               </label>
+
+
+
               <button
                 type="submit"
                 className="w-full bg-black text-white py-2 px-4 text-sm cursor-pointer rounded-sm hover:scale-95 transition duration-300"
