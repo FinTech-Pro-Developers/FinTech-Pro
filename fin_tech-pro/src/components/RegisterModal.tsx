@@ -126,7 +126,7 @@ export default function RegisterModal({ openRegister, onClose, openLoginModal }:
                 <span className="text-sm text-black font-medium">Password</span>
                 <input
                   value={values.newPassword}
-                  type="password"
+                  type={viewPassword? "text" : "password"}
                   name="newPassword"
                   onChange={handleChange}
                   autoComplete="new-password"
