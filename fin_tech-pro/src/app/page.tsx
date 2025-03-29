@@ -1,11 +1,10 @@
-import AuthButtons from "./components/AuthButtons";
-
-export default function Home() {
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+export default function Page() {
   return (
-    <div  className=" w-full min-h-screen flex items-center justify-center  " >
-      Home
-
-      <AuthButtons/>
+    <div>
+      <Header />
+      <Hero />
     </div>
   );
 }
