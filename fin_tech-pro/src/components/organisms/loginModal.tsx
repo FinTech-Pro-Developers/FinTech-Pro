@@ -1,6 +1,7 @@
 "use client";
 
 import {  EyeClosedIcon, EyeIcon, X } from "lucide-react";
+import { useRouter } from "next/navigation"; 
 import Link from "next/link";
 import { useState, ChangeEvent, FormEvent } from "react";
 
@@ -12,7 +13,9 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ OpenLogin, onClose, openRegisterModal }: LoginModalProps) {
-    const [viewPassword, setViewPassword] = useState(false)
+  const router = useRouter();
+
+  const [viewPassword, setViewPassword] = useState(false)
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -69,6 +72,8 @@ export default function LoginModal({ OpenLogin, onClose, openRegisterModal }: Lo
         email: "",
         password: "",
       });
+      onClose(); 
+      router.push("/Dashboard");
     }
   };
 
@@ -144,12 +149,14 @@ export default function LoginModal({ OpenLogin, onClose, openRegisterModal }: Lo
                   <p className="text-red-500 text-sm font-medium ml-auto">{errors.password}</p>
                 )}
               </label>
+              
               <button
                 type="submit"
                 className="w-full bg-[#000000] text-[#ffffff] py-2 px-4 text-sm cursor-pointer rounded-sm transform transition hover:scale-90 duration-300"
               >
-                Login
+              Login
               </button>
+              
             </div>
 
             <p className="text-sm text-[#000000] font-medium self-center">
