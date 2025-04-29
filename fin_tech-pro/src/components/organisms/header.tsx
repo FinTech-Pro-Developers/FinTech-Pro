@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import Link from 'next/link'
-import LoginModal from './loginModal'
-import { useState } from 'react'
-import RegisterModal from './registerModal'
-import ThemeSwitch from '../molecules/themeSwitch'
+import Link from "next/link"
+import LoginModal from "./loginModal"
+import { useState } from "react"
+import RegisterModal from "./registerModal"
+import ThemeSwitch from "../molecules/themeSwitch"
 
 export default function Header() {
   const [OpenLogin, setOpenLogin] = useState(false)
@@ -31,51 +31,49 @@ export default function Header() {
   }
 
   return (
-    <div className="py-5 px-6 mx-3 max-sm:flex-col flex items-center justify-between border-b dark:border-b-gray-200 border-b-gray-300">
-      <Link href="/">
-        <h1 className="font-bold text-lg">FinTech Pro</h1>
-      </Link>
-
-      <div className="flex max-sm:flex-col gap-6 pt-3">
-        <div className="flex items-center gap-6 text-sm font-medium justify-center">
-          <Link href=" " className=" hover:text-gray-600">
-            Features
-          </Link>
-          <Link href=" " className="hover:text-gray-600">
-            Pricing
-          </Link>
-          <Link href=" " className="hover:text-gray-600 ">
-            About
-          </Link>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <button
-            onClick={handleOpenLogin}
-            className="border border-gray-300 py-2 px-4 rounded hover:bg-gray-100 cursor-pointer "
-          >
-            Login
-          </button>
-          <button
-            onClick={handleOpenRegister}
-            className="bg-gray-900 dark:bg-white text-gray-100 dark:text-black hover:bg-gray-800 py-2 px-4 rounded cursor-pointer"
-          >
-            Register
-          </button>
-          <ThemeSwitch />
-        </div>
+    <header className="py-5 px-6 shadow flex items-center justify-between bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+      <div className="flex items-center">
+        <h1 className="font-bold text-lg text-gray-900 dark:text-white">FinTech Pro</h1>
       </div>
-
-      <LoginModal
-        OpenLogin={OpenLogin}
-        onClose={() => setOpenLogin(false)}
-        openRegisterModal={openRegisterModal}
-      />
+      <div className="flex items-center gap-4 text-sm">
+        <Link
+          href="#features"
+          className="py-2 px-4 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          Features
+        </Link>
+        <Link
+          href="#pricing"
+          className="py-2 px-4 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          Pricing
+        </Link>
+        <Link
+          href="#about"
+          className="py-2 px-4 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          About
+        </Link>
+        <ThemeSwitch />
+        <button
+          onClick={handleOpenLogin}
+          className="border border-gray-300 dark:border-gray-600 py-2 px-4 rounded text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+        >
+          Login
+        </button>
+        <button
+          onClick={handleOpenRegister}
+          className="bg-gray-900 text-white hover:bg-gray-800 py-2 px-4 rounded dark:bg-indigo-600 dark:hover:bg-indigo-700 transition-colors"
+        >
+          Register
+        </button>
+      </div>
+      <LoginModal OpenLogin={OpenLogin} onClose={() => setOpenLogin(false)} openRegisterModal={openRegisterModal} />
       <RegisterModal
         openRegister={openRegister}
         onClose={() => setOpenRegister(false)}
         openLoginModal={openLoginModal}
       />
-    </div>
+    </header>
   )
 }
