@@ -1,8 +1,5 @@
-import Hero from '@/components/molecules/hero'
+import Hero from "@/components/molecules/hero"
+
 export default function Page() {
-  return (
-    <>
-      <Hero />
-    </>
-  )
+  return <Hero />
 }

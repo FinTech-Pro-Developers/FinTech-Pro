@@ -1,3 +1,39 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@custom-variant dark (&:where(.dark, .dark *));
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 18, 18, 18;
+  --background-end-rgb: 18, 18, 18;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.dark .shadow {
+  box-shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Add subtle gradient to dark mode backgrounds */
+.dark .bg-gray-800 {
+  background-image: linear-gradient(to bottom right, #1f2937, #111827);
+}
+
+/* Add subtle highlight to dark mode buttons */
+.dark button {
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+/* Improve dark mode text readability */
+.dark text-gray-200 {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
