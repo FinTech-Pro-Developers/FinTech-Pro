@@ -38,7 +38,7 @@ export default function Header() {
 
       <div className="flex max-sm:flex-col gap-6 pt-3">
         <div className="flex items-center gap-6 text-sm font-medium justify-center">
-          <Link href=" " className=" hover:text-gray-600">
+          <Link href="/feature" className=" hover:text-gray-600">
             Features
           </Link>
           <Link href=" " className="hover:text-gray-600">
