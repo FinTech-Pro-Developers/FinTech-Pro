@@ -1,34 +1,35 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import LoginModal from './loginModal'
-import { useState } from 'react'
-import RegisterModal from './registerModal'
-import ThemeSwitch from '../molecules/themeSwitch'
+import Link from "next/link";
+import LoginModal from "./loginModal";
+import { useState } from "react";
+import RegisterModal from "./registerModal";
+import ThemeSwitch from "../molecules/themeSwitch";
+import ProfileDropdown from "./profileDropdown";
 
 export default function Header() {
-  const [OpenLogin, setOpenLogin] = useState(false)
-  const [openRegister, setOpenRegister] = useState(false)
+  const [OpenLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
 
   const handleOpenLogin = () => {
-    setOpenLogin(true)
-    setOpenRegister(false)
-  }
+    setOpenLogin(true);
+    setOpenRegister(false);
+  };
 
   const handleOpenRegister = () => {
-    setOpenRegister(true)
-    setOpenLogin(false)
-  }
+    setOpenRegister(true);
+    setOpenLogin(false);
+  };
 
   const openRegisterModal = () => {
-    setOpenLogin(false)
-    setOpenRegister(true)
-  }
+    setOpenLogin(false);
+    setOpenRegister(true);
+  };
 
   const openLoginModal = () => {
-    setOpenLogin(true)
-    setOpenRegister(false)
-  }
+    setOpenLogin(true);
+    setOpenRegister(false);
+  };
 
   return (
     <div className="py-5 px-6 mx-3 max-sm:flex-col flex items-center justify-between border-b dark:border-b-gray-200 border-b-gray-300">
@@ -47,6 +48,8 @@ export default function Header() {
           <Link href=" " className="hover:text-gray-600 ">
             About
           </Link>
+
+          <ProfileDropdown />
         </div>
 
         <div className="flex items-center gap-4">
@@ -77,5 +80,5 @@ export default function Header() {
         openLoginModal={openLoginModal}
       />
     </div>
-  )
+  );
 }
