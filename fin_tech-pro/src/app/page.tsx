@@ -1,5 +1,5 @@
-import Hero from '@/components/molecules/hero'
-import { Features } from '@/components/organisms/features'
+import Hero from "@/components/molecules/hero";
+import { Features } from "@/components/organisms/features";
 
 export default function Page() {
   return (
@@ -7,5 +7,5 @@ export default function Page() {
       <Hero />
       <Features />
     </>
-  )
+  );
 }
